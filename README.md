@@ -22,9 +22,12 @@ Prerequisites: Python and pip.
 Create an isolated environment and install the pinned dependencies:
 
     python -m venv .venv
-    # Windows PowerShell
+Windows PowerShell:
+
     .venv\Scripts\Activate.ps1
-    # macOS or Linux
+
+macOS or Linux:
+
     source .venv/bin/activate
     python -m pip install -r requirements.txt
 
