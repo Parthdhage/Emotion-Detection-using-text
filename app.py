@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 import pickle
 import re
+from pathlib import Path
 
 def clean_text(text):
     text = text.lower()
@@ -9,9 +10,10 @@ def clean_text(text):
 app = Flask(__name__)
 
 # Load components
-model = pickle.load(open("emotion_model.pkl", "rb"))
-vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
-encoder = pickle.load(open("label_encoder.pkl", "rb"))
+BASE_DIR = Path(__file__).resolve().parent
+model = pickle.load(open(BASE_DIR / "models" / "emotion_model.pkl", "rb"))
+vectorizer = pickle.load(open(BASE_DIR / "models" / "vectorizer.pkl", "rb"))
+encoder = pickle.load(open(BASE_DIR / "models" / "label_encoder.pkl", "rb"))
 
 @app.route("/", methods=["GET", "POST"])
 def index():
